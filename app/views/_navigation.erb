@@ -1,13 +1,22 @@
 <div class="container">
   <a class="logo" href="/">Just Say Wen</a>
   <nav>
-    <form action="/author/login" name="login-form">
-      <ul>
+    <ul>
+      <% if session[:current_user_id] == nil %>
+      <form action="/author/login" name="login-form">
         <li>Email: <input type="text" name="login[email]"></li>
         <li>Password: <input type="password" name="login[password]"></li>
         <li><input type="submit" value="Login"></li>
         <li><a href="/create/author">Create account</a></li>
-      </ul>
-    </form>
+      </form>
+      <% else %>
+      <form action="/create/post" name="create-post-button">
+        <li><input type="submit" value="Create post"></li>
+      </form>
+      <form action="/author/logout" name="logout-button">
+        <li><input type="submit" value="Logout"></li>
+      </form>
+      <% end %>
+    </ul>
   </nav>
 </div>
