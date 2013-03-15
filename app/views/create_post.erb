@@ -1,5 +1,5 @@
 <div class="container">
-  <form action="/new" method="post" class="blog-post">
+  <form action="/new/post" method="post" class="blog-post">
     <ul>
       <li>Title:</li>
       <li><input type="text" name="post[title]"></li>
@@ -8,6 +8,7 @@
       <li>Tags: (please separate with commas)</li>
       <li><input type="text" name="tag[name]"></li>
       <li><input type="submit" value="Post"></li>
+      <!-- <input type="hidden" value="<% @current_user_id %>" name="post[author_id]"> -->
     </ul>
   </form>
 </div>
