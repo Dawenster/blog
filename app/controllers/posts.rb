@@ -8,7 +8,7 @@ post '/new/post' do
 	entered_tags = params[:tag][:name].split(',')
 	p entered_tags
 	entered_tags.each do |tag|
-		@post.tags << Tag.find_or_create_by_name(tag)
+		@post.tags << Tag.find_or_create_by_name(tag.strip)
 	end
 	redirect '/'
 end

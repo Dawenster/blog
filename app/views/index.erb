@@ -1,8 +1,14 @@
 <div class="container">
-	<ul class="all-posts">
-		<% @posts.each do |post| %>
-			<li><a href="/post/<%= post.id %>"><%= post.title %></a></li>
-			<li><%= post.content %></li>
-		<% end %>
-	</ul>
+	<% @posts.each do |post| %>
+		<div class="each-post">
+			<ul class="post-list">
+				<li><a href="/post/<%= post.id %>"><%= post.title %></a></li>
+				<li><%= post.content %></li>
+				<li><%= Author.find(post.author_id).name %></li>
+				<li><% post.tags.each do |tag| %><span>
+						<a href="/tag/<%= tag.name %>"><%= tag.name %></a>
+						</span><% end %></li>
+			</ul>
+		</div>
+	<% end %>
 </div>
