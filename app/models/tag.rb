@@ -1,5 +1,6 @@
 class Tag < ActiveRecord::Base
-	has_and_belongs_to_many :posts
+	has_many :posts, :through => :linktables
+	has_many :linktables
 
 	validates :name, :uniqueness => true
 end

@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
-	has_and_belongs_to_many :tags
+	has_many :tags, :through => :linktables
+	has_many :linktables
 	belongs_to :author
 end

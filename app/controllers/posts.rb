@@ -4,17 +4,13 @@ end
 
 post '/new/post' do
 	params[:post][:author_id] = session[:id]
-	post = Post.create(params[:post])
-	entered_tags = []
-	@created_tags = []
+	@post = Post.create(params[:post])
 	entered_tags = params[:tag][:name].split(',')
 	p entered_tags
-
 	entered_tags.each do |tag|
-		@created_tags = Tag.create(:name => tag)
+		@post.tags << Tag.find_or_create_by_name(tag)
 	end
-	p @created_tags
-	post.tags = @created_tags
+	redirect '/'
 end
 
 get '/post/:id' do
