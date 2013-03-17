@@ -3,9 +3,18 @@ get '/create/post' do
 end
 
 post '/new/post' do
-	login_user
-	params[:post][:author_id] = session[:current_user_id]
-	Post.create(params[:post])
+	params[:post][:author_id] = session[:id]
+	post = Post.create(params[:post])
+	entered_tags = []
+	@created_tags = []
+	entered_tags = params[:tag][:name].split(',')
+	p entered_tags
+
+	entered_tags.each do |tag|
+		@created_tags = Tag.create(:name => tag)
+	end
+	p @created_tags
+	post.tags = @created_tags
 end
 
 get '/post/:id' do

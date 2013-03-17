@@ -2,18 +2,18 @@
   <a class="logo" href="/">Just Say Wen</a>
   <nav>
     <ul>
-      <% if session[:current_user_id] == nil %>
-      <form action="/author/login" name="login-form">
+      <% if session[:id] == nil %>
+      <form action="/author/login" method="post" name="login-form">
         <li>Email: <input type="text" name="login[email]"></li>
         <li>Password: <input type="password" name="login[password]"></li>
         <li><input type="submit" value="Login"></li>
         <li><a href="/create/author">Create account</a></li>
       </form>
       <% else %>
-      <form action="/create/post" name="create-post-button">
+      <form action="/create/post" method="get" name="create-post-button">
         <li><input type="submit" value="Create post"></li>
       </form>
-      <form action="/author/logout" name="logout-button">
+      <form action="/author/logout" method="get" name="logout-button">
         <li><input type="submit" value="Logout"></li>
       </form>
       <% end %>
