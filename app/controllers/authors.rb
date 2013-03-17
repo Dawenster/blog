@@ -3,7 +3,8 @@ get '/create/author' do
 end
 
 post '/new/author' do
-	new_author = Author.create(params[:author])
+	new_author = Author.new(params[:author])
+	new_author.save
 	session[:id] = new_author.id
 	redirect '/'
 end
@@ -12,10 +13,9 @@ post '/author/login' do
 	current_user = Author.authenticate(params[:login])
 	if current_user
 		session[:id] = current_user.id
-		p "hello!"
 		erb :index
 	else
-		erb :create_author
+		redirect '/create/author'
 	end
 end
 
