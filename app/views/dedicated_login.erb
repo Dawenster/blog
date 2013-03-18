@@ -1,0 +1,23 @@
+<div class="container">
+  <form action="/author/login" method="post" name="login-form">
+    <h2><% @errors.each do |error| %><%= error %><% end %></h2>
+    
+
+    <div class="control-group">
+      <label class="control-label">Email</label>
+      <div class="controls">
+        <input type="text" name="author[email]">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Password:</label>
+      <div class="controls">
+        <input type="password" name="author[password_hash]">
+        <input type="submit" value="Login" class="btn">
+      </div>
+    </div>
+
+    <a href="/create/author">Create account</a>
+  </form>
+</div>

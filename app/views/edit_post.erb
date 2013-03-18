@@ -1,0 +1,20 @@
+<div class="container">
+  <form action="/post/<%= @post.id %>" method="post" class="blog-post">
+    <input type="hidden" value="put" name="_method" />
+    <ul>
+      <li>Title:</li>
+      <li><input type="text" name="post[title]" value="<%= @post.title %>"></li>
+      <li>Content:</li>
+      <li><textarea rows="10" cols="20" name="post[content]"><%= @post.content %></textarea></li>
+      <li>Tags:</li>
+      <li><input type="text" name="tag[name]" placeholder="Please separate with commas" value="<%= @post.tags.map { |tag| tag.name }.join(', ') %>"></li>
+      <li><input type="submit" value="Update"></li>
+    </ul>
+  </form>
+  <form action="/post/<%= @post.id %>/delete" method="post" class="blog-post">
+    <input type="hidden" value="delete" name="_method">
+    <ul>
+      <li><input type="submit" value="Delete"></li>
+    </ul>
+  </form>
+</div>
