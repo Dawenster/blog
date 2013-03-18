@@ -4,9 +4,14 @@ end
 
 post '/new/author' do
 	new_author = Author.new(params[:author])
-	new_author.save
-	session[:id] = new_author.id
+	if new_author.save
+		new_author.save
+		session[:id] = new_author.id
 	redirect '/'
+	else
+		@errors = new_author.errors.full_messages
+		erb :create_author
+	end
 end
 
 post '/author/login' do
@@ -15,7 +20,8 @@ post '/author/login' do
 		session[:id] = current_user.id
 		erb :index
 	else
-		redirect '/create/author'
+		@errors = ['Woah there - wrong email or password.  Try again!']
+		erb :dedicated_login
 	end
 end
 

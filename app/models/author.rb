@@ -1,8 +1,6 @@
 require 'bcrypt'
 
 class Author < ActiveRecord::Base
-	# attr_reader :entered_password
-
 	before_create :set_password
 
 	has_many :posts

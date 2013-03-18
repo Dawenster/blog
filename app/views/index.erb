@@ -1,14 +1,25 @@
 <div class="container">
 	<% @posts.each do |post| %>
-		<div class="each-post">
-			<ul class="post-list">
-				<li><a href="/post/<%= post.id %>"><%= post.title %></a></li>
-				<li><%= post.content %></li>
-				<li><%= Author.find(post.author_id).name %></li>
-				<li><% post.tags.each do |tag| %><span>
-						<a href="/tag/<%= tag.name %>"><%= tag.name %></a>
-						</span><% end %></li>
-			</ul>
+	<div>
+		<div class="pull-right">
+			<% if post.tags.length > 0 %>
+			<p class="pull-left tag-text">Tags:</p><% post.tags.each do |tag| %><span>
+				<a href="/tag/<%= tag.name %>" class="label pull-left"><%= tag.name %></a>
+			</span><% end %>
+			<% end %>
+
+			<% if @current_user && @current_user.id == post.author_id %>
+				<a href="/post/<%= post.id %>/edit" class="edit-link pull-right">Edit this post</a>
+			<% end %>
 		</div>
+
+		<div class="hero-unit">
+			
+			<h1><a href="/post/<%= post.id %>"><%= post.title %></a></h1>		
+			<%= post.content %>
+			<%= Author.find(post.author_id).name %>
+			
+		</div>
+	</div>
 	<% end %>
 </div>

@@ -18,3 +18,20 @@ get '/post/:id' do
 	@author_name = Author.find(@post.author_id).name
 	erb :single_post
 end
+
+put '/post/:id' do
+	@post = Post.find(params[:id])
+	@post.update_attributes(params[:post])
+	redirect "/post/#{@post.id}"
+end
+
+get '/post/:id/edit' do
+	@post = Post.find(params[:id])
+	erb :edit_post
+end
+
+delete '/post/:id/delete' do
+	@post = Post.find(params[:id])
+	Post.destroy(@post.id)
+	redirect '/'
+end

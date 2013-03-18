@@ -1,14 +1,32 @@
 <div class="container">
-  <form action="/new/post" method="post" class="blog-post">
-    <ul>
-      <li>Title:</li>
-      <li><input type="text" name="post[title]"></li>
-      <li>Content:</li>
-      <li><textarea rows="10" cols="20" name="post[content]"></textarea></li>
-      <li>Tags:</li>
-      <li><input type="text" name="tag[name]" placeholder="Please separate with commas"></li>
-      <li><input type="submit" value="Post"></li>
-      <!-- <input type="hidden" value="<% @id %>" name="post[author_id]"> -->
-    </ul>
+  <form action="/new/post" method="post" class="form-horizontal">
+    
+    <legend>Create a post</legend>
+    
+    <div class="control-group">
+      <lable class="control-label">Title</lable>
+      <div class="controls">
+        <input type="text" name="post[title]">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <lable class="control-label">Content</lable>
+      <div class="controls">
+        <textarea rows="10" cols="20" name="post[content]"></textarea>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <lable class="control-label">Tags</lable>
+      <div class="controls">
+        <input type="text" name="tag[name]" placeholder="Please separate with commas">
+        <input type="submit" value="Post" class="btn">
+      </div>
+
+    </div>
+
+    
+
   </form>
 </div>

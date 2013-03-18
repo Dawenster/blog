@@ -1,13 +1,30 @@
 <div class="container">
-  <form action="/new/author" method="post" class="new-author">
-    <ul>
-      <li>Name:</li>
-      <li><input type="text" name="author[name]"></li>
-      <li>Email:</li>
-      <li><input type="text" name="author[email]"></li>
-      <li>Password:</li>
-      <li><input type="password" name="author[password_hash]"></li>
-      <li><input type="submit" value="Create"></li>
-    </ul>
+  <form action="/new/author" method="post" class="form-horizontal">
+    <h2><% if @errors %>
+      <% @errors.each do |error| %><%= error %></h2><% end %>
+    <% end %>
+  
+    <div class="control-group">
+      <label class="control-label">Name</label>
+      <div class="controls">
+        <input type="text" name="author[name]">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Email</label>
+      <div class="controls">
+        <input type="text" name="author[email]">
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Password:</label>
+      <div class="controls">
+        <input type="password" name="author[password_hash]">
+        <input type="submit" value="Create" class="btn">
+      </div>
+    </div>
+      
   </form>
 </div>

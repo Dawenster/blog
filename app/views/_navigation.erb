@@ -1,22 +1,31 @@
-<div class="container">
-  <a class="logo" href="/">Just Say Wen</a>
-  <nav>
-    <ul>
-      <% if session[:id] == nil %>
-      <form action="/author/login" method="post" name="login-form">
-        <li>Email: <input type="text" name="login[email]"></li>
-        <li>Password: <input type="password" name="login[password]"></li>
-        <li><input type="submit" value="Login"></li>
-        <li><a href="/create/author">Create account</a></li>
+<div class="navbar">
+  <div class="navbar-inner">
+  <a class="brand logo" href="/">Just Say Wen</a>
+
+    <% if session[:id] == nil %>
+
+    <div class="navbar-form pull-right">
+      <form action="/author/login" method="post" class="login-box">
+        <input type="text" name="login[email]" class="input-small" placeholder="Email">
+        <input type="password" name="login[password]" class="input-small" placeholder="Password">
+        <input type="submit" value="Login" class="btn">
       </form>
-      <% else %>
-      <form action="/create/post" method="get" name="create-post-button">
-        <li><input type="submit" value="Create post"></li>
+      <a href="/create/author" class="pull-right">Create account</a>
+    </div>
+    
+    <% else %>
+
+    <div class="navbar-form pull-right">
+      <form action="/create/post" method="get" class="pull-left logout-box">
+        <input type="submit" value="Create post" class="btn">
       </form>
-      <form action="/author/logout" method="get" name="logout-button">
-        <li><input type="submit" value="Logout"></li>
+      
+      <form action="/author/logout" method="get" class="pull-right logout-box">
+        <input type="submit" value="Logout" class="btn">
       </form>
-      <% end %>
-    </ul>
-  </nav>
+    </div>
+
+    <% end %>
+
+  </div>
 </div>

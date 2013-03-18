@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen">
   <title></title>
 </head>
-<%= erb :_navigation %>
 <body>
-  <%= yield %>
+<div class="dw-container">
+	<div class="row-fluid">
+		<div class="span12"><%= erb :_navigation %></div>
+	</div>
+  	<%= yield %>
+  </div>
 </body>
 </html>
