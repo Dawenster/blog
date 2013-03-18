@@ -1,5 +1,10 @@
-require 'rake'
-# require 'rspec/core/rake_task'
+# require 'rake'
+begin
+  require 'rspec/core/rake_task'
+rescue LoadError
+end
+
+
 
 
 require ::File.expand_path('../config/environment', __FILE__)
@@ -89,7 +94,7 @@ namespace :db do
   desc "Create the database at #{DB_NAME}"
   task :create do
     puts "Creating database #{DB_NAME} if it doesn't exist..."
-    # exec("createdb #{DB_NAME}")
+    exec("createdb #{DB_NAME}")
   end
 
   desc "Drop the database at #{DB_NAME}"
@@ -124,6 +129,6 @@ task "console" do
 end
 
 desc "Run the specs"
-# RSpec::Core::RakeTask.new(:spec)
+RSpec::Core::RakeTask.new(:spec)
 
 task :default  => :specs
